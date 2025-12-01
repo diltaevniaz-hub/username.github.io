@@ -1,0 +1,1595 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Молодежный ресурсный центр Лисаковска</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --success: #2ecc71;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --text: #333;
+            --text-light: #7f8c8d;
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            font-size: 2.5rem;
+            color: var(--light);
+        }
+        
+        .logo-text h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+        
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: var(--dark);
+            padding: 0.8rem 0;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            background-color: var(--secondary);
+        }
+        
+        /* Auth Section */
+        .auth-section {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--light);
+            color: var(--light);
+        }
+        
+        .btn-outline:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        .btn-success {
+            background-color: var(--success);
+            color: white;
+        }
+        
+        .btn-success:hover {
+            background-color: #27ae60;
+        }
+        
+        .btn-danger {
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        .btn-danger:hover {
+            background-color: #c0392b;
+        }
+        
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--light);
+        }
+        
+        .card-icon {
+            font-size: 2rem;
+            color: var(--secondary);
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .question-form textarea {
+            width: 100%;
+            height: 150px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            resize: vertical;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+        
+        .question-form textarea:focus {
+            border-color: var(--secondary);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+        
+        .specialist-info {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--light);
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .specialist-info h3 {
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        /* Dashboard */
+        .dashboard {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            margin-bottom: 40px;
+        }
+        
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--light);
+        }
+        
+        .dashboard-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .dashboard-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .question-list {
+            list-style: none;
+        }
+        
+        .question-item {
+            padding: 20px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            background-color: #f9f9f9;
+            transition: var(--transition);
+        }
+        
+        .question-item:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .question-meta {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        .question-text {
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .answer-form textarea {
+            width: 100%;
+            height: 100px;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            resize: vertical;
+        }
+        
+        .response-item {
+            background-color: #e8f4fd;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 15px;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1100;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 450px;
+            max-width: 100%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .modal-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+        
+        .close-btn:hover {
+            color: var(--accent);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            border-color: var(--secondary);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: var(--secondary);
+            font-size: 1.2rem;
+        }
+        
+        .footer-section p {
+            margin-bottom: 10px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #34495e;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            background-color: var(--success);
+            color: white;
+            border-radius: 6px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            display: none;
+            z-index: 1200;
+            max-width: 350px;
+        }
+        
+        .notification.error {
+            background-color: var(--accent);
+        }
+        
+        .notification.warning {
+            background-color: #f39c12;
+        }
+        
+        /* User Profile */
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        /* Tabs */
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: var(--transition);
+        }
+        
+        .tab.active {
+            border-bottom-color: var(--secondary);
+            color: var(--secondary);
+            font-weight: 600;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* Stats */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        /* Additional Sections */
+        .section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin-bottom: 40px;
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--light);
+        }
+        
+        .section-icon {
+            font-size: 2rem;
+            color: var(--secondary);
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .news-card {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 20px;
+            transition: var(--transition);
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .news-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .news-date {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .news-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .contact-card {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .dashboard-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .dashboard-actions {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h1>Молодежный ресурсный центр Лисаковска</h1>
+                        <p>Юридические и психологические консультации для молодежи</p>
+                    </div>
+                </div>
+                <div class="auth-section">
+                    <button class="btn btn-outline" id="loginBtn">
+                        <i class="fas fa-sign-in-alt"></i> Вход
+                    </button>
+                    <button class="btn btn-primary" id="registerBtn">
+                        <i class="fas fa-user-plus"></i> Регистрация
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <ul class="nav-links">
+                <li><a href="#" class="nav-link active" data-section="home"><i class="fas fa-home"></i> Главная</a></li>
+                <li><a href="#lawyer" class="nav-link" data-section="lawyer"><i class="fas fa-gavel"></i> Юридическая помощь</a></li>
+                <li><a href="#psychologist" class="nav-link" data-section="psychologist"><i class="fas fa-brain"></i> Психологическая помощь</a></li>
+                <li><a href="#news" class="nav-link" data-section="news"><i class="fas fa-newspaper"></i> Новости</a></li>
+                <li><a href="#about" class="nav-link" data-section="about"><i class="fas fa-info-circle"></i> О нас</a></li>
+                <li><a href="#contacts" class="nav-link" data-section="contacts"><i class="fas fa-phone-alt"></i> Контакты</a></li>
+            </ul>
+            <div class="user-profile" id="userProfile" style="display: none;">
+                <div class="user-avatar" id="userAvatar">U</div>
+                <span id="userName">Пользователь</span>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Home Section -->
+        <section id="home-section" class="section active-section">
+            <!-- Stats Section -->
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-value">8,268</div>
+                    <div class="stat-label">Молодежи в Лисаковске</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">14-35</div>
+                    <div class="stat-label">Возраст молодежи в РК</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="questionsCount">0</div>
+                    <div class="stat-label">Задано вопросов</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="answersCount">0</div>
+                    <div class="stat-label">Получено ответов</div>
+                </div>
+            </div>
+            
+            <!-- Welcome Section -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h2 class="card-title">Добро пожаловать в Молодежный ресурсный центр!</h2>
+                </div>
+                <p>Мы предоставляем бесплатные юридические и психологические консультации для молодежи города Лисаковск. Наши специалисты готовы помочь вам с решением различных вопросов и проблем.</p>
+                <div class="specialist-info">
+                    <h3><i class="fas fa-lightbulb"></i> Как это работает?</h3>
+                    <p>1. Зарегистрируйтесь на нашем сайте</p>
+                    <p>2. Задайте вопрос юристу или психологу</p>
+                    <p>3. Получите квалифицированный ответ в личном кабинете</p>
+                </div>
+            </div>
+            
+            <!-- Consultation Section -->
+            <div class="main-content">
+                <!-- Lawyer Consultation -->
+                <div class="card" id="lawyer">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-gavel"></i>
+                        </div>
+                        <h2 class="card-title">Юридическая консультация</h2>
+                    </div>
+                    <div class="question-form">
+                        <textarea placeholder="Опишите вашу проблему или задайте вопрос юристу..."></textarea>
+                        <button class="btn btn-primary submit-btn">
+                            <i class="fas fa-paper-plane"></i> Отправить вопрос
+                        </button>
+                    </div>
+                    <div class="specialist-info">
+                        <h3><i class="fas fa-info-circle"></i> Информация о юристе</h3>
+                        <p>Наш юрист готов помочь вам с правовыми вопросами, связанными с образованием, трудоустройством, жильем и другими аспектами жизни молодежи.</p>
+                    </div>
+                </div>
+                
+                <!-- Psychologist Consultation -->
+                <div class="card" id="psychologist">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h2 class="card-title">Консультация психолога</h2>
+                    </div>
+                    <div class="question-form">
+                        <textarea placeholder="Опишите вашу ситуацию или задайте вопрос психологу..."></textarea>
+                        <button class="btn btn-primary submit-btn">
+                            <i class="fas fa-paper-plane"></i> Отправить вопрос
+                        </button>
+                    </div>
+                    <div class="specialist-info">
+                        <h3><i class="fas fa-info-circle"></i> Информация о психологе</h3>
+                        <p>Наш психолог поможет вам справиться со стрессом, тревогой, проблемами в отношениях и другими психологическими трудностями.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- News Section -->
+        <section id="news-section" class="section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-newspaper"></i>
+                </div>
+                <h2 class="section-title">Новости и события</h2>
+            </div>
+            
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-date">15 мая 2025</div>
+                    <h3 class="news-title">Открытие нового спортивного зала</h3>
+                    <p>В Молодежном ресурсном центре открылся новый современный спортивный зал, оборудованный по последним стандартам.</p>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-date">10 мая 2025</div>
+                    <h3 class="news-title">Бесплатные юридические консультации</h3>
+                    <p>Теперь каждый четверг с 16:00 до 18:00 наши юристы проводят бесплатные очные консультации для молодежи.</p>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-date">5 мая 2025</div>
+                    <h3 class="news-title">Тренинг по личностному росту</h3>
+                    <p>Приглашаем всех желающих на тренинг "Развитие лидерских качеств", который пройдет 25 мая в 15:00.</p>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-date">1 мая 2025</div>
+                    <h3 class="news-title">Конкурс молодежных проектов</h3>
+                    <p>Объявляем старт конкурса молодежных социальных проектов. Победители получат гранты на реализацию своих идей.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- About Section -->
+        <section id="about-section" class="section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-info-circle"></i>
+                </div>
+                <h2 class="section-title">О нас</h2>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h2 class="card-title">Молодежный ресурсный центр Лисаковска</h2>
+                </div>
+                
+                <p>Мы - команда профессионалов, работающих для поддержки и развития молодежи города Лисаковск. Наша миссия - создание условий для реализации потенциала молодых людей, оказание им всесторонней поддержки и содействие в решении различных вопросов.</p>
+                
+                <div class="specialist-info">
+                    <h3><i class="fas fa-bullseye"></i> Наши цели</h3>
+                    <p>• Предоставление качественных юридических и психологических консультаций</p>
+                    <p>• Организация культурных, образовательных и спортивных мероприятий</p>
+                    <p>• Создание пространства для самореализации и развития молодежи</p>
+                    <p>• Поддержка молодежных инициатив и проектов</p>
+                </div>
+                
+                <div class="specialist-info">
+                    <h3><i class="fas fa-users"></i> Наша команда</h3>
+                    <p>В нашем центре работают квалифицированные юристы, психологи, педагоги и организаторы, которые искренне заинтересованы в помощи молодежи и развитии нашего города.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contacts Section -->
+        <section id="contacts-section" class="section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-phone-alt"></i>
+                </div>
+                <h2 class="section-title">Контакты</h2>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Адрес</h3>
+                    <p>г. Лисаковск, Дворец культуры</p>
+                    <p style="font-size: 0.9rem; color: var(--text-light); margin-top: 5px;">КГУ "Молодежный ресурсный центр"</p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Телефон</h3>
+                    <p>3-05-88</p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>График работы</h3>
+                    <p><strong>Будни:</strong> 9:00 - 18:30</p>
+                    <p><strong>Выходные:</strong> Не работаем</p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Для молодежи</h3>
+                    <p>Возраст: 14-35 лет</p>
+                    <p>8268 человек в Лисаковске</p>
+                </div>
+            </div>
+            
+            <div class="card" style="margin-top: 30px;">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h2 class="card-title">Наши учредители</h2>
+                </div>
+                
+                <div class="specialist-info">
+                    <h3><i class="fas fa-landmark"></i> КГУ "Молодежный ресурсный центр" и ГУ "Отдел внутренней политики акимата города Лисаковск"</h3>
+                    <p>Основные организации, курирующие деятельность центра и обеспечивающие реализацию молодежной политики в городе.</p>
+                </div>
+                
+                <div class="specialist-info">
+                    <h3><i class="fas fa-monument"></i> Дворец культуры г. Лисаковска</h3>
+                    <p>Учреждение, предоставляющее площадки для культурных и спортивных мероприятий центра.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Dashboard for Specialists -->
+        <div class="dashboard" id="specialistDashboard" style="display: none;">
+            <div class="dashboard-header">
+                <h2 class="dashboard-title">Личный кабинет специалиста</h2>
+                <div class="dashboard-actions">
+                    <button class="btn btn-outline" id="refreshQuestions">
+                        <i class="fas fa-sync-alt"></i> Обновить
+                    </button>
+                    <button class="btn btn-danger" id="specialistLogoutBtn">
+                        <i class="fas fa-sign-out-alt"></i> Выйти
+                    </button>
+                </div>
+            </div>
+            
+            <div class="tabs">
+                <div class="tab active" data-tab="active-questions">Активные вопросы</div>
+                <div class="tab" data-tab="answered-questions">Отвеченные вопросы</div>
+                <div class="tab" data-tab="specialist-profile">Профиль</div>
+            </div>
+            
+            <div class="tab-content active" id="active-questions">
+                <h3>Вопросы, ожидающие ответа</h3>
+                <ul class="question-list" id="activeQuestionsList">
+                    <!-- Active questions will be added here dynamically -->
+                </ul>
+            </div>
+            
+            <div class="tab-content" id="answered-questions">
+                <h3>Отвеченные вопросы</h3>
+                <ul class="question-list" id="answeredQuestionsList">
+                    <!-- Answered questions will be added here dynamically -->
+                </ul>
+            </div>
+            
+            <div class="tab-content" id="specialist-profile">
+                <h3>Профиль специалиста</h3>
+                <div class="form-group">
+                    <label>Имя пользователя</label>
+                    <input type="text" class="form-control" id="specialistUsername" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Роль</label>
+                    <input type="text" class="form-control" id="specialistRole" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Статистика</label>
+                    <div class="stats-container">
+                        <div class="stat-card">
+                            <div class="stat-value" id="specialistAnswers">0</div>
+                            <div class="stat-label">Дано ответов</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="specialistActive">0</div>
+                            <div class="stat-label">Активных вопросов</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Dashboard for Users -->
+        <div class="dashboard" id="userDashboard" style="display: none;">
+            <div class="dashboard-header">
+                <h2 class="dashboard-title">Личный кабинет пользователя</h2>
+                <div class="dashboard-actions">
+                    <button class="btn btn-outline" id="userRefresh">
+                        <i class="fas fa-sync-alt"></i> Обновить
+                    </button>
+                    <button class="btn btn-danger" id="userLogoutBtn">
+                        <i class="fas fa-sign-out-alt"></i> Выйти
+                    </button>
+                </div>
+            </div>
+            
+            <div class="tabs">
+                <div class="tab active" data-tab="my-questions">Мои вопросы</div>
+                <div class="tab" data-tab="user-profile">Мой профиль</div>
+                <div class="tab" data-tab="settings">Настройки</div>
+            </div>
+            
+            <div class="tab-content active" id="my-questions">
+                <h3>История моих вопросов и ответов</h3>
+                <ul class="question-list" id="userQuestionsList">
+                    <!-- User questions will be added here dynamically -->
+                </ul>
+            </div>
+            
+            <div class="tab-content" id="user-profile">
+                <h3>Мой профиль</h3>
+                <div class="form-group">
+                    <label>Имя пользователя</label>
+                    <input type="text" class="form-control" id="userUsername" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" class="form-control" id="userEmail" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Дата регистрации</label>
+                    <input type="text" class="form-control" id="userRegDate" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Статистика</label>
+                    <div class="stats-container">
+                        <div class="stat-card">
+                            <div class="stat-value" id="userQuestionsCount">0</div>
+                            <div class="stat-label">Задано вопросов</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="userAnswersCount">0</div>
+                            <div class="stat-label">Получено ответов</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="settings">
+                <h3>Настройки аккаунта</h3>
+                <div class="form-group">
+                    <label>Сменить пароль</label>
+                    <input type="password" class="form-control" placeholder="Текущий пароль">
+                    <input type="password" class="form-control" placeholder="Новый пароль" style="margin-top: 10px;">
+                    <input type="password" class="form-control" placeholder="Повторите новый пароль" style="margin-top: 10px;">
+                    <button class="btn btn-primary" style="margin-top: 15px;">
+                        <i class="fas fa-key"></i> Сменить пароль
+                    </button>
+                </div>
+                <div class="form-group">
+                    <label>Уведомления</label>
+                    <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 10px;">
+                        <label style="display: flex; align-items: center; gap: 10px;">
+                            <input type="checkbox" checked> Получать уведомления о новых ответах
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 10px;">
+                            <input type="checkbox" checked> Получать новости центра
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>О молодежи Лисаковска</h3>
+                    <p>Возраст молодежи в РК: от 14 до 35 лет</p>
+                    <p>Количество молодежи в городе Лисаковск: 8268 человек</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-building"></i>
+                            <span>КГУ "Молодежный ресурсный центр" и ГУ "Отдел внутренней политики акимата города Лисаковск"</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Адрес: г. Лисаковск, Дворец культуры</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>Телефон: 3-05-88</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <span>График работы: Будни 9:00-18:30, Выходные: не работаем</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Наша миссия</h3>
+                    <p>Поддержка и развитие молодежи города Лисаковск, предоставление юридических и психологических консультаций, организация культурных и спортивных мероприятий.</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Молодежный ресурсный центр Лисаковска. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Modals -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Вход в систему</h3>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="form-group">
+                <label for="loginUsername">Логин</label>
+                <input type="text" id="loginUsername" class="form-control" placeholder="Введите ваш логин">
+            </div>
+            <div class="form-group">
+                <label for="loginPassword">Пароль</label>
+                <input type="password" id="loginPassword" class="form-control" placeholder="Введите ваш пароль">
+            </div>
+            <button class="btn btn-primary" id="loginSubmit" style="width: 100%;">
+                <i class="fas fa-sign-in-alt"></i> Войти
+            </button>
+            <p style="text-align: center; margin-top: 15px;">
+                Нет аккаунта? <a href="#" id="showRegister" style="color: var(--secondary);">Зарегистрироваться</a>
+            </p>
+        </div>
+    </div>
+    
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Регистрация</h3>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="form-group">
+                <label for="regUsername">Имя пользователя</label>
+                <input type="text" id="regUsername" class="form-control" placeholder="Придумайте логин">
+            </div>
+            <div class="form-group">
+                <label for="regEmail">Email</label>
+                <input type="email" id="regEmail" class="form-control" placeholder="Введите ваш email">
+            </div>
+            <div class="form-group">
+                <label for="regPassword">Пароль</label>
+                <input type="password" id="regPassword" class="form-control" placeholder="Придумайте пароль">
+            </div>
+            <div class="form-group">
+                <label for="regConfirmPassword">Подтвердите пароль</label>
+                <input type="password" id="regConfirmPassword" class="form-control" placeholder="Повторите пароль">
+            </div>
+            <button class="btn btn-primary" id="registerSubmit" style="width: 100%;">
+                <i class="fas fa-user-plus"></i> Зарегистрироваться
+            </button>
+            <p style="text-align: center; margin-top: 15px;">
+                Уже есть аккаунт? <a href="#" id="showLogin" style="color: var(--secondary);">Войти</a>
+            </p>
+        </div>
+    </div>
+    
+    <!-- Notification -->
+    <div class="notification" id="notification"></div>
+    
+    <script>
+// --- Исправленный, рабочий и стабильный JavaScript для сайта МРЦ ---
+// Все функции сохранены, ошибки устранены, события восстанавливаются после updateUI()
+
+// Данные для входа специалистов
+const specialists = {
+    lawyer: { username: "lawyer_mrc", password: "lawyer2025mrc", role: "lawyer" },
+    psychologist: { username: "psychologist_mrc", password: "psychologist2025mrc", role: "psychologist" }
+};
+
+// DOM элементы
+let loginBtn, registerBtn, logoutBtnMain;
+const loginModal = document.getElementById('loginModal');
+const registerModal = document.getElementById('registerModal');
+const closeBtns = document.querySelectorAll('.close-btn');
+const showRegister = document.getElementById('showRegister');
+const showLogin = document.getElementById('showLogin');
+const loginSubmit = document.getElementById('loginSubmit');
+const registerSubmit = document.getElementById('registerSubmit');
+const specialistDashboard = document.getElementById('specialistDashboard');
+const userDashboard = document.getElementById('userDashboard');
+const userProfile = document.getElementById('userProfile');
+const notification = document.getElementById('notification');
+const navLinks = document.querySelectorAll('.nav-link');
+const sections = document.querySelectorAll('.section');
+
+// Данные
+let currentUser = null;
+let questions = JSON.parse(localStorage.getItem('questions')) || [];
+let users = JSON.parse(localStorage.getItem('users')) || [];
+let nextQuestionId = parseInt(localStorage.getItem('nextQuestionId')) || 1;
+
+// --- ИНИЦИАЛИЗАЦИЯ ---
+document.addEventListener('DOMContentLoaded', () => {
+    const savedUser = localStorage.getItem('currentUser');
+    if (savedUser) currentUser = JSON.parse(savedUser);
+
+    updateUI();
+    updateStats();
+    showSection('home');
+});
+
+// --- Навигация ---
+navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+        showSection(link.dataset.section);
+    });
+});
+
+function showSection(id) {
+    sections.forEach(s => s.classList.remove('active-section'));
+    document.getElementById(`${id}-section`).classList.add('active-section');
+
+    document.querySelector('.main-content').style.display = id === 'home' ? 'grid' : 'none';
+    window.scrollTo(0, 0);
+}
+
+// ---------------- МОДАЛКИ ------------------
+function attachAuthButtons() {
+    loginBtn = document.getElementById('loginBtn');
+    registerBtn = document.getElementById('registerBtn');
+    logoutBtnMain = document.getElementById('logoutBtnMain');
+
+    if (loginBtn) loginBtn.onclick = () => loginModal.style.display = 'flex';
+    if (registerBtn) registerBtn.onclick = () => registerModal.style.display = 'flex';
+    if (logoutBtnMain) logoutBtnMain.onclick = logout;
+}
+
+closeBtns.forEach(btn => btn.onclick = () => {
+    loginModal.style.display = 'none';
+    registerModal.style.display = 'none';
+});
+
+window.onclick = (e) => {
+    if (e.target === loginModal) loginModal.style.display = 'none';
+    if (e.target === registerModal) registerModal.style.display = 'none';
+};
+
+showRegister.onclick = (e) => {
+    e.preventDefault();
+    loginModal.style.display = 'none';
+    registerModal.style.display = 'flex';
+};
+
+showLogin.onclick = (e) => {
+    e.preventDefault();
+    registerModal.style.display = 'none';
+    loginModal.style.display = 'flex';
+};
+
+// ---------------- ВХОД ------------------
+loginSubmit.onclick = () => {
+    const username = document.getElementById('loginUsername').value;
+    const password = document.getElementById('loginPassword').value;
+
+    // Специалисты
+    if (username === specialists.lawyer.username && password === specialists.lawyer.password) {
+        currentUser = { username: 'Юрист МРЦ', role: 'lawyer' };
+        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+        showNotification('Успешный вход как юрист!');
+        loginModal.style.display = 'none';
+        updateUI();
+        return;
+    }
+
+    if (username === specialists.psychologist.username && password === specialists.psychologist.password) {
+        currentUser = { username: 'Психолог МРЦ', role: 'psychologist' };
+        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+        showNotification('Успешный вход как психолог!');
+        loginModal.style.display = 'none';
+        updateUI();
+        return;
+    }
+
+    // Обычный пользователь
+    const user = users.find(u => u.username === username && u.password === password);
+    if (!user) return showNotification('Неверный логин или пароль!', 'error');
+
+    currentUser = user;
+    currentUser.role = 'user';
+    localStorage.setItem('currentUser', JSON.stringify(currentUser));
+
+    showNotification('Успешный вход!');
+    loginModal.style.display = 'none';
+    updateUI();
+};
+
+// ---------------- РЕГИСТРАЦИЯ ------------------
+registerSubmit.onclick = () => {
+    const username = document.getElementById('regUsername').value;
+    const password = document.getElementById('regPassword').value;
+    const confirm = document.getElementById('regConfirmPassword').value;
+    const email = document.getElementById('regEmail').value;
+
+    if (!username || !password || !confirm || !email)
+        return showNotification('Заполните все поля!', 'error');
+
+    if (password !== confirm)
+        return showNotification('Пароли не совпадают!', 'error');
+
+    if (users.some(u => u.username === username))
+        return showNotification('Такой логин уже занят!', 'error');
+
+    if (users.some(u => u.email === email))
+        return showNotification('Этот email уже используется!', 'error');
+
+    const newUser = {
+        username,
+        password,
+        email,
+        role: 'user',
+        regDate: new Date().toLocaleDateString('ru-RU')
+    };
+
+    users.push(newUser);
+    localStorage.setItem('users', JSON.stringify(users));
+
+    showNotification('Регистрация успешна!');
+    registerModal.style.display = 'none';
+    loginModal.style.display = 'flex';
+};
+
+// ---------------- ОТПРАВКА ВОПРОСОВ ------------------
+document.querySelectorAll('.submit-btn').forEach(btn => {
+    btn.onclick = () => {
+        if (!currentUser || currentUser.role !== 'user')
+            return showNotification('Войдите как пользователь!', 'error');
+
+        const box = btn.closest('.card');
+        const textarea = box.querySelector('textarea');
+        const text = textarea.value.trim();
+        if (!text) return showNotification('Введите вопрос!', 'error');
+
+        const type = box.id === 'lawyer' ? 'lawyer' : 'psychologist';
+
+        const q = {
+            id: nextQuestionId++,
+            userId: currentUser.username,
+            userEmail: currentUser.email,
+            specialistType: type,
+            question: text,
+            date: new Date().toLocaleString('ru-RU'),
+            answer: null
+        };
+
+        questions.push(q);
+        localStorage.setItem('questions', JSON.stringify(questions));
+        localStorage.setItem('nextQuestionId', nextQuestionId);
+
+        textarea.value = '';
+        showNotification('Вопрос отправлен!');
+        updateUI();
+        updateStats();
+    };
+});
+
+// ---------------- UI ------------------
+function updateUI() {
+    const auth = document.querySelector('.auth-section');
+
+    if (!currentUser) {
+        auth.innerHTML = `
+            <button class="btn btn-outline" id="loginBtn"><i class="fas fa-sign-in-alt"></i> Вход</button>
+            <button class="btn btn-primary" id="registerBtn"><i class="fas fa-user-plus"></i> Регистрация</button>
+        `;
+
+        userDashboard.style.display = 'none';
+        specialistDashboard.style.display = 'none';
+        userProfile.style.display = 'none';
+    } else {
+        auth.innerHTML = `
+            <div class="user-profile">
+                <div class="user-avatar">${currentUser.username[0].toUpperCase()}</div>
+                <span>${currentUser.username}</span>
+            </div>
+            <button class="btn btn-outline" id="logoutBtnMain">
+                <i class="fas fa-sign-out-alt"></i> Выйти
+            </button>
+        `;
+
+        userProfile.style.display = 'flex';
+        document.getElementById('userAvatar').textContent = currentUser.username[0].toUpperCase();
+        document.getElementById('userName').textContent = currentUser.username;
+
+        if (currentUser.role === 'user') {
+            userDashboard.style.display = 'block';
+            specialistDashboard.style.display = 'none';
+            updateUserDashboard();
+        } else {
+            specialistDashboard.style.display = 'block';
+            userDashboard.style.display = 'none';
+            updateSpecialistDashboard();
+        }
+    }
+
+    attachAuthButtons();
+    attachDashboardButtons();
+}
+
+function updateUserDashboard() {
+    const userQuestions = questions.filter(q => q.userId === currentUser.username);
+    
+    // Обновление статистики пользователя
+    document.getElementById('userUsername').value = currentUser.username;
+    document.getElementById('userEmail').value = currentUser.email || 'Не указан';
+    document.getElementById('userRegDate').value = currentUser.regDate || 'Неизвестно';
+    document.getElementById('userQuestionsCount').textContent = userQuestions.length;
+    document.getElementById('userAnswersCount').textContent = userQuestions.filter(q => q.answer).length;
+    
+    const questionList = document.getElementById('userQuestionsList');
+    
+    if (userQuestions.length === 0) {
+        questionList.innerHTML = '<li class="question-item">У вас пока нет вопросов.</li>';
+        return;
+    }
+    
+    questionList.innerHTML = userQuestions.map(q => `
+        <li class="question-item">
+            <div class="question-header">
+                <div class="question-meta">
+                    <i class="fas ${q.specialistType === 'lawyer' ? 'fa-gavel' : 'fa-brain'}"></i>
+                    ${q.specialistType === 'lawyer' ? 'Юристу' : 'Психологу'} • ${q.date}
+                </div>
+                <span class="status ${q.answer ? 'answered' : 'pending'}">
+                    ${q.answer ? '<i class="fas fa-check-circle" style="color: var(--success);"></i> Ответ получен' : '<i class="fas fa-clock" style="color: var(--accent);"></i> Ожидает ответа'}
+                </span>
+            </div>
+            <div class="question-text">
+                ${q.question}
+            </div>
+            ${q.answer ? `
+                <div class="response-item">
+                    <strong><i class="fas fa-reply"></i> Ответ специалиста:</strong>
+                    <p style="margin-top: 10px;">${q.answer}</p>
+                </div>
+            ` : ''}
+        </li>
+    `).join('');
+}
+
+function updateSpecialistDashboard() {
+    const specialistQuestions = questions.filter(q => q.specialistType === currentUser.role);
+    const activeQuestions = specialistQuestions.filter(q => !q.answer);
+    const answeredQuestions = specialistQuestions.filter(q => q.answer);
+    
+    // Обновление статистики специалиста
+    document.getElementById('specialistUsername').value = currentUser.username;
+    document.getElementById('specialistRole').value = currentUser.role === 'lawyer' ? 'Юрист' : 'Психолог';
+    document.getElementById('specialistAnswers').textContent = answeredQuestions.length;
+    document.getElementById('specialistActive').textContent = activeQuestions.length;
+    
+    const activeQuestionsList = document.getElementById('activeQuestionsList');
+    const answeredQuestionsList = document.getElementById('answeredQuestionsList');
+    
+    // Активные вопросы
+    if (activeQuestions.length === 0) {
+        activeQuestionsList.innerHTML = '<li class="question-item">Нет активных вопросов.</li>';
+    } else {
+        activeQuestionsList.innerHTML = activeQuestions.map(q => `
+            <li class="question-item">
+                <div class="question-header">
+                    <div class="question-meta">
+                        <i class="fas fa-user"></i> ${q.userId} • ${q.date}
+                    </div>
+                </div>
+                <div class="question-text">
+                    ${q.question}
+                </div>
+                <div class="answer-form">
+                    <textarea placeholder="Введите ваш ответ..." id="answer-${q.id}"></textarea>
+                    <button class="btn btn-success answer-btn" data-id="${q.id}">
+                        <i class="fas fa-reply"></i> Отправить ответ
+                    </button>
+                </div>
+            </li>
+        `).join('');
+    }
+    
+    // Отвеченные вопросы
+    if (answeredQuestions.length === 0) {
+        answeredQuestionsList.innerHTML = '<li class="question-item">Нет отвеченных вопросов.</li>';
+    } else {
+        answeredQuestionsList.innerHTML = answeredQuestions.map(q => `
+            <li class="question-item">
+                <div class="question-header">
+                    <div class="question-meta">
+                        <i class="fas fa-user"></i> ${q.userId} • ${q.date}
+                    </div>
+                </div>
+                <div class="question-text">
+                    ${q.question}
+                </div>
+                <div class="response-item">
+                    <strong><i class="fas fa-reply"></i> Ваш ответ:</strong>
+                    <p style="margin-top: 10px;">${q.answer}</p>
+                </div>
+            </li>
+        `).join('');
+    }
+    
+    // Добавление обработчиков для кнопок ответа
+    document.querySelectorAll('.answer-btn').forEach(btn => {
+        btn.onclick = function() {
+            const questionId = parseInt(this.dataset.id);
+            const answerText = document.getElementById(`answer-${questionId}`).value.trim();
+            
+            if (!answerText) return showNotification('Введите текст ответа!', 'error');
+            
+            const question = questions.find(q => q.id === questionId);
+            if (!question) return;
+            
+            question.answer = answerText;
+            localStorage.setItem('questions', JSON.stringify(questions));
+            
+            showNotification('Ответ отправлен пользователю!');
+            updateSpecialistDashboard();
+            updateStats();
+        };
+    });
+}
+
+// ---------------- ДАШБОРД КНОПКИ ------------------
+function attachDashboardButtons() {
+    const refreshQuestions = document.getElementById('refreshQuestions');
+    const userRefresh = document.getElementById('userRefresh');
+    const specialistLogoutBtn = document.getElementById('specialistLogoutBtn');
+    const userLogoutBtn = document.getElementById('userLogoutBtn');
+    
+    if (refreshQuestions) refreshQuestions.onclick = () => {
+        updateSpecialistDashboard();
+        showNotification('Список вопросов обновлен!');
+    };
+    
+    if (userRefresh) userRefresh.onclick = () => {
+        updateUserDashboard();
+        showNotification('Данные обновлены!');
+    };
+    
+    if (specialistLogoutBtn) specialistLogoutBtn.onclick = logout;
+    if (userLogoutBtn) userLogoutBtn.onclick = logout;
+}
+
+// ---------------- ТАБЫ ------------------
+document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('tab')) {
+        const tabId = e.target.dataset.tab;
+        const tabsContainer = e.target.closest('.tabs');
+        const tabContents = tabsContainer.closest('.dashboard').querySelectorAll('.tab-content');
+        
+        tabsContainer.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        e.target.classList.add('active');
+        
+        tabContents.forEach(c => c.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+    }
+});
+
+// ---------------- СТАТИСТИКА ------------------
+function updateStats() {
+    const totalQuestions = questions.length;
+    const answeredQuestions = questions.filter(q => q.answer).length;
+    
+    document.getElementById('questionsCount').textContent = totalQuestions;
+    document.getElementById('answersCount').textContent = answeredQuestions;
+}
+
+// ---------------- ВЫХОД ------------------
+function logout() {
+    currentUser = null;
+    localStorage.removeItem('currentUser');
+    showNotification('Вы вышли из системы.');
+    updateUI();
+    updateStats();
+}
+
+// ---------------- УВЕДОМЛЕНИЯ ------------------
+function showNotification(message, type = 'success') {
+    notification.textContent = message;
+    notification.className = 'notification';
+    
+    if (type === 'error') notification.classList.add('error');
+    if (type === 'warning') notification.classList.add('warning');
+    
+    notification.style.display = 'block';
+    
+    setTimeout(() => {
+        notification.style.display = 'none';
+    }, 4000);
+}
+    </script>
+</body>
+</html>
